@@ -40,6 +40,7 @@ enum PaymentStrategyType {
     SEZZLE = 'sezzle',
     ZIP = 'zip',
     CONVERGE = 'converge',
+    DYNAMIC = 'dynamic',
 }
 
 export default PaymentStrategyType;

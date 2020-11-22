@@ -55,6 +55,10 @@ export default class PaymentStrategyRegistry extends Registry<PaymentStrategy, P
             return PaymentStrategyType.OFFSITE;
         }
 
+        if (paymentMethod.id === 'windcave') {
+            return PaymentStrategyType.DYNAMIC;
+        }
+
         return PaymentStrategyType.CREDIT_CARD;
     }
 

@@ -34,6 +34,7 @@ import { ConvergePaymentStrategy } from './strategies/converge';
 import { CreditCardPaymentStrategy } from './strategies/credit-card';
 import { CreditCardRedirectPaymentStrategy } from './strategies/credit-card-redirect';
 import { CyberSourcePaymentStrategy } from './strategies/cybersource/index';
+import { DynamicPaymentStrategy } from './strategies/dynamic';
 import { ExternalPaymentStrategy } from './strategies/external';
 import { createGooglePayPaymentProcessor, GooglePayAdyenV2Initializer, GooglePayAuthorizeNetInitializer, GooglePayBraintreeInitializer, GooglePayCheckoutcomInitializer, GooglePayPaymentStrategy, GooglePayStripeInitializer } from './strategies/googlepay';
 import { KlarnaPaymentStrategy, KlarnaScriptLoader } from './strategies/klarna';
@@ -529,7 +530,11 @@ export default function createPaymentStrategyRegistry(
             storeCreditActionCreator,
             new BoltScriptLoader(scriptLoader)
         )
-);
+    );
+
+    registry.register(PaymentStrategyType.DYNAMIC, () =>
+        new DynamicPaymentStrategy(store, orderActionCreator)
+    );
 
     return registry;
 }
