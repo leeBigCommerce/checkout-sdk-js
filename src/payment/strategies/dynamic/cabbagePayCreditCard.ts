@@ -1,38 +1,29 @@
 import { DynamicPaymentMethod } from './dynamicPaymentMethod';
 
 export const cabbagePayCreditCard: DynamicPaymentMethod = ({
-        // draftOrderID,
-        container,
-        disableSubmission,
-        enableSubmission,
-    }) => {
-        // console.log('cabbagePayCreditCard mounting');
+    // draftOrderID,
+    container,
+}) => {
+    // console.log('cabbagePayCreditCard mounting');
 
-        const userInput = document.createElement('input');
-        const pay = (): Promise<void> => {
-            // console.log('cabbagePayCreditCard paying', draftOrderID, container);
+    const userInput = document.createElement('input');
+    userInput.placeholder = 'Enter 4321 here';
 
-            return new Promise((resolve, reject) => {
-                if (userInput.value === '1234') {
-                    resolve();
-                } else {
-                    reject();
-                }
-            });
-        };
+    const pay = (): Promise<void> => {
+        // console.log('cabbagePayCreditCard paying', draftOrderID, container);
 
-        userInput.placeholder = 'Enter 1234 here';
-        userInput.addEventListener('change', () => {
-            if (userInput.value) {
-                enableSubmission();
+        return new Promise((resolve, reject) => {
+            if (userInput.value === '4321') {
+                resolve();
             } else {
-                disableSubmission();
+                reject();
             }
         });
-
-        container.appendChild(userInput);
-
-        // console.log('cabbagePayCreditCard mounted');
-
-        return Promise.resolve({ pay });
     };
+
+    container.appendChild(userInput);
+
+    // console.log('cabbagePayCreditCard mounted');
+
+    return Promise.resolve({ pay });
+};

@@ -45,12 +45,10 @@ export default class DynamicPaymentStrategy implements PaymentStrategy {
     }
 
     initialize(options: any) {
-        const { container, enableSubmission, disableSubmission } = options;
+        const { container } = options;
         const methodProps = {
             draftOrderID: 'ID of the draft order from somewhere',
             container,
-            enableSubmission,
-            disableSubmission,
         };
 
         return this._setupPaymentMethod(methodProps).then(
