@@ -12,7 +12,7 @@ import { cabbagePayCreditCard } from './cabbagePayCreditCard';
 // and checkout-js/sdk would neither know nor care
 
 export default class DynamicPaymentStrategy implements PaymentStrategy {
-    // In reality, taken from a dynamic import e.g
+    // In reality 'cabbagePayCreditCard' would be taken from a dynamic import e.g
     // As a result of the user's selection of Cabbage Pay's Credit Card method
     // we know to load the `cabbagePayCreditCard.js`
     // and that its signature conforms to the type within `dynamicPaymentMethod.ts`
