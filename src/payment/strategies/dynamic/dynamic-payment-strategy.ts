@@ -5,17 +5,24 @@ import PaymentStrategy from '../payment-strategy';
 
 import { cabbagePayCreditCard } from './cabbagePayCreditCard';
 
+// DynamicPaymentStrategy crudely acts as a boundary between checkout
+// and ANY possible payment method
+
+// e.g. cabbagePayCreditCard should be directly substitutable with any other
+// and checkout-js/sdk would neither know nor care
+
 export default class DynamicPaymentStrategy implements PaymentStrategy {
-    // In reality, taken from a dynamic import
+    // In reality, taken from a dynamic import e.g
+    // As a result of the user's selection of Cabbage Pay's Credit Card method
+    // we know to load the `cabbagePayCreditCard.js`
+    // and that its signature conforms to the type within `dynamicPaymentMethod.ts`
+    // just as any other payment provider's method would
     _setupPaymentMethod = cabbagePayCreditCard;
 
     constructor(
         protected _store: CheckoutStore,
         protected _orderActionCreator: OrderActionCreator
-    ) {
-        // In reality, taken from a dynamic import
-        this._setupPaymentMethod = cabbagePayCreditCard;
-    }
+    ) { }
 
     // will be overwritten by the return of _setupPaymentMethod()
     _deinitialize = () => {

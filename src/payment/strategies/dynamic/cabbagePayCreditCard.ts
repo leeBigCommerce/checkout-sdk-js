@@ -1,5 +1,10 @@
 import { DynamicPaymentMethod } from './dynamicPaymentMethod';
 
+// Should billing address be handled here?!? - Arguably it is part of the Payment's domain
+// and some provider's methods do mess with it
+
+// Plus, it's not really right to be part of a Draft Order, which exists pre-payment
+
 export const cabbagePayCreditCard: DynamicPaymentMethod = ({
     // draftOrderID,
     container,
